@@ -13,7 +13,7 @@ public class CurrencyRateFetcher {
     private RateRepository rateRepository;
 
     @Autowired
-    public CurrencyRateFetcher(final @Qualifier("inMemoryRates") RateFetcher rateFetcher, final RateRepository rateRepository) {
+    public CurrencyRateFetcher(final @Qualifier("openExchangeRates") RateFetcher rateFetcher, final RateRepository rateRepository) {
         this.rateFetcher = rateFetcher;
         this.rateRepository = rateRepository;
     }
