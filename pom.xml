@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.currency.converter</groupId>
+    <artifactId>currencyConverter</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>LATEST</version>
+    </parent>
+
+    <name>Currency exchange with Spring</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <jbehave.version>3.9.5</jbehave.version>
+    	<assertj.version>1.7.1</assertj.version>
+    </properties>
+
+    <dependencies>
+
+        <!-- Spring Boot -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-test</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+	    <dependency>
+	        <groupId>org.springframework.data</groupId>
+	        <artifactId>spring-data-commons</artifactId>
+	    </dependency>
+
+	    <dependency>
+	        <groupId>commons-lang</groupId>
+	        <artifactId>commons-lang</artifactId>
+	        <version>2.6</version>
+	    </dependency>
+
+	    <dependency>
+	        <groupId>org.jbehave</groupId>
+	        <artifactId>jbehave-spring</artifactId>
+	        <version>${jbehave.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+	
+	    <dependency>
+	        <groupId>org.assertj</groupId>
+	        <artifactId>assertj-core</artifactId>
+	        <version>${assertj.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+        <!-- H2DB -->
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <configuration>
+			        <testSourceDirectory>${basedir}/src/main/java/</testSourceDirectory>
+			        <testClassesDirectory>${project.build.directory}/classes/</testClassesDirectory>
+			        <includes>
+			            <include>jbehave/tests/stories/**/*.java</include>
+			        </includes>
+			    </configuration>
+			</plugin>
+        </plugins>
+    </build>
+</project>
